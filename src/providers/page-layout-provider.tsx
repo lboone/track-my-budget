@@ -1,8 +1,11 @@
 import React from 'react'
+import LayoutProvider from './layout-provider'
 
 const PageLayoutProvider = ({children} : {children: React.ReactNode}) => {
   return (
-    <div className="p-5">{children}</div>
+    <LayoutProvider>
+      <div className="p-5">{children}</div>
+    </LayoutProvider>
   )
 }
 

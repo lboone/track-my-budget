@@ -1,6 +1,5 @@
 import { MyUserButton } from "@/components/myclerk";
 import { Popover, Descriptions, DescriptionsProps } from "antd";
-import { SignedIn, SignedOut, SignInButton, SignUpButton } from '@clerk/nextjs';
 
 import UserType from "@/types/UserType";
 
