@@ -1,6 +1,11 @@
+import { Lato } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import "./auth.css";
 import ThemeProvider from "@/providers/theme-provider";
+import { ClerkProvider } from '@clerk/nextjs'
+
+const lato = Lato({subsets: [], weight: ['300','400','700']});
 
 export const metadata: Metadata = {
   title: "Track My Budget",
@@ -13,12 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${lato.className}`}>
+        <body >
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
