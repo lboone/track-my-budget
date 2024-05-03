@@ -1,19 +1,15 @@
 import { MyUserButton } from "@/components/myclerk";
-import { currentUser } from "@clerk/nextjs/server";
+import { GetLoggedInUserFromMongoDB } from "@/server-actions/users";
 
-const MyUserCard = async () => {
-  const user = await currentUser();
-  const wholeName = `${user?.firstName} ${user?.lastName}`;
-  const email = user?.emailAddresses[0]?.emailAddress;
-  const userName = user?.username;
-  const clerkUserId = user?.id;
+const MyUserCard = async ({...props}) => { 
+  const user = await GetLoggedInUserFromMongoDB();
   return (
     <div className="flex flex-col gap-2">
       <MyUserButton />
-      <span>Name: {wholeName}</span>
-      <span>Username: {userName}</span>
-      <span>Email: {email}</span>
-      <span>Clerk User ID: {clerkUserId}</span>
+      <span>Name: {user?.name}</span>
+      <span>Username: {user?.username}</span>
+      <span>Email: {user?.email}</span>
+      <span>Clerk User ID: {user?.clerkUserId}</span>
     </div>
   );
 };
