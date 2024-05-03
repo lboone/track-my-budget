@@ -1,9 +1,9 @@
-import { MyUserCard } from '@/components/myclerk';
-import { GetLoggedInUserFromMongoDB } from "@/server-actions/users";
-
-export default async function Home() {
-  const user  = await GetLoggedInUserFromMongoDB();
+import {PageLayoutProvider} from '@/providers'
+export default function HomePage() {
+  
   return (
-    <div><MyUserCard loggedInUser={user}/></div>
+    <PageLayoutProvider>
+      Home Page
+    </PageLayoutProvider>
   );
 }
