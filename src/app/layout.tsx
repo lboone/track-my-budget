@@ -4,6 +4,7 @@ import "./globals.css";
 import "./auth.css";
 import ThemeProvider from "@/providers/theme-provider";
 import { ClerkProvider } from '@clerk/nextjs'
+import LayoutProvider from "@/providers/layout-provider";
 
 const lato = Lato({subsets: [], weight: ['300','400','700']});
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <html lang="en" className={`${lato.className}`}>
         <body >
           <ThemeProvider>
-            {children}
+            <LayoutProvider>{children}</LayoutProvider>
           </ThemeProvider>
         </body>
       </html>
